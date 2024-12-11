@@ -4,7 +4,8 @@
   "description": "POC for automation with cypress for frontend e2e and api testing",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open"
+    "test:api": "cypress run --spec 'cypress/e2e/api-tests/**/*.cy.js'",
+    "test:e2e": "cypress run --spec 'cypress/e2e/e2e-tests/**/*.cy.js'"
   },
   "repository": {
     "type": "git",

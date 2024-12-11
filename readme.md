@@ -39,16 +39,16 @@ To run this project your machine should have installed:
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/gabrielvictorio/cypress-e2e-api-assignment.git
-````
+```
 ### 2. Change to project directory
 ```bash
 cd cypress-e2e-api-assignment
 ```
-### 2. Install the Dependencies
+### 3. Install the Dependencies
 ```bash
 npm install
 ```
-### 3. Run the Tests
+### 4. Run All the Tests
 Headless Mode
 ```bash
 npx cypress run
@@ -57,3 +57,13 @@ Cypress UI
 ```bash
 npm cypress open
 ```
+
+### 5. Run API or E2E tests
+Run only API tests
+```bash
+npm run test:api
+````
+Run only E2E tests
+```bash
+npm run test:e2e
+````

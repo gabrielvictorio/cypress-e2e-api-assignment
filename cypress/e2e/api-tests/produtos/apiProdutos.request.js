@@ -1,5 +1,6 @@
+import {faker} from '@faker-js/faker'
+
 const apiUrl = Cypress.env('apiUrl')
-const payloadProdutos = require('../../../fixtures/produtos.payload.json')
 const token = Cypress.env('authToken')
 
 function requestGetAllProducts() {
@@ -10,6 +11,14 @@ function requestGetAllProducts() {
 }
 
 function requestPostNewProduct(){
+
+    const payloadProdutos = {
+        nome: faker.commerce.productName(),
+        preco: faker.number.int(),
+        descricao: faker.commerce.productDescription(),
+        quantidade: faker.number.int()
+    }
+
     return cy.getAuthToken().then((token) => {
         cy.request({
         method: 'POST',
@@ -21,5 +30,6 @@ function requestPostNewProduct(){
         })
     })
 }
+
 
 export { requestGetAllProducts, requestPostNewProduct }

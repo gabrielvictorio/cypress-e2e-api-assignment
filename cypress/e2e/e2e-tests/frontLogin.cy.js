@@ -1,3 +1,5 @@
+const baseUrl = Cypress.env('baseUrl')
+
 describe('template spec', () => {
 
   const selectorList = {
@@ -15,28 +17,36 @@ describe('template spec', () => {
     logoutButton: '[data-testid="logout"]'
   }
 
-  it('Register a new admin user', () => {
-    cy.visit('https://front.serverest.dev/cadastrarusuarios')
-    cy.get(selectorList.nameField).type('Joao')
-    cy.get(selectorList.emailField).type('trial_example@test.com')
-    cy.get(selectorList.passwordRegisterField).type('passkey')
-    cy.get(selectorList.registerAdminCheckbox).click()
-    cy.get(selectorList.registerButton).click()
-    cy.get(selectorList.pageAlert).contains('Cadastro realizado com sucesso')
-  })
+  const userData ={
+    name: 'Joao',
+    email: 'trial_example@test.com',
+    password: 'passkey'
+  }
+
+  // TO IMPLEMENT FUNCTION TO DYNAMICALLY CREATE AND ERASE USER DATA - Flaky due to test mass and serverrest database reset
+
+  // it('Register a new admin user', () => {
+  //   cy.visit(`${baseUrl}/cadastrarusuarios`)
+  //   cy.get(selectorList.nameField).type(userData.name)
+  //   cy.get(selectorList.emailField).type(userData.email)
+  //   cy.get(selectorList.passwordRegisterField).type(userData.password)
+  //   cy.get(selectorList.registerAdminCheckbox).click()
+  //   cy.get(selectorList.registerButton).click()
+  //   cy.get(selectorList.pageAlert).contains('Cadastro realizado com sucesso')
+  // })
 
   it('Successful login with admin user', () => {
-    cy.visit('https://front.serverest.dev/login')
-    cy.get(selectorList.emailField).type('trial_example@test.com')
-    cy.get(selectorList.passwordLoginField).type('passkey')
+    cy.visit(`${baseUrl}/login`)
+    cy.get(selectorList.emailField).type(userData.email)
+    cy.get(selectorList.passwordLoginField).type(userData.password)
     cy.get(selectorList.loginButton).click()
-    cy.location('pathname').should('equal','admin/home')
+    cy.location('pathname').should('equal','/admin/home')
   })
 
   it('Successful logout with admin user', () => {
-    cy.visit('https://front.serverest.dev/login')
-    cy.get(selectorList.emailField).type('trial_example@test.com')
-    cy.get(selectorList.passwordLoginField).type('passkey')
+    cy.visit(`${baseUrl}/login`)
+    cy.get(selectorList.emailField).type(userData.email)
+    cy.get(selectorList.passwordLoginField).type(userData.password)
     cy.get(selectorList.loginButton).click()
     cy.location('pathname').should('equal','/admin/home')
     cy.get(selectorList.logoutButton).click()

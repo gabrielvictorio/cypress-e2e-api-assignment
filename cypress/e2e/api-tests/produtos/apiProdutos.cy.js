@@ -19,8 +19,8 @@ describe('Serverrest Produtos Test - GET', () => {
         apiProdutos.requestGetAllProducts().should((response) => {
             expect(response.status).to.eq(200)
             expect(response.body).to.have.property('quantidade')
-            expect(response.body.usuarios).to.be.an('array');
-            expect(response.body.usuarios.length).to.be.greaterThan(0)
+            expect(response.body.produtos).to.be.an('array');
+            expect(response.body.produtos.length).to.be.greaterThan(0)
         })
     })
 

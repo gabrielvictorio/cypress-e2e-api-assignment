@@ -1,5 +1,6 @@
 const apiUrl = Cypress.env('apiUrl')
 const payloadProdutos = require('../../../fixtures/produtos.payload.json')
+const token = Cypress.env('authToken')
 
 function requestGetAllProducts() {
     return cy.request({
@@ -9,7 +10,8 @@ function requestGetAllProducts() {
 }
 
 function requestPostNewProduct(){
-    return cy.request({
+    return cy.getAuthToken().then((token) => {
+        cy.request({
         method: 'POST',
         url: `${apiUrl}/produtos`,
         body: payloadProdutos,
@@ -17,7 +19,7 @@ function requestPostNewProduct(){
             Authorization: token,
           },
         })
-    // TO IMPLEMENT A AUTH TOKEN ON CYPRESS COMMANDS
+    })
 }
 
 export { requestGetAllProducts, requestPostNewProduct }

@@ -1,4 +1,5 @@
-const payloadUsuario = require('../../../fixtures/usuario.payload.json')
+import {faker} from '@faker-js/faker'
+
 const apiUrl = Cypress.env('apiUrl')
 
 function requestGetAllUsers() {
@@ -9,11 +10,18 @@ function requestGetAllUsers() {
 }
 
 function requestPostUser() {
+
+    const payloadUsuarios = {
+        nome: faker.name.fullName(),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        administrador: "true"
+    }
+
     return cy.request({
         method: 'POST',
         url: `${apiUrl}/usuarios`,
-        body: payloadUsuario,
-        // TO ADD A DYNAMICALLY GENERATING DATA FOR USER DATA PAYLOAD
+        body: payloadUsuarios,
     })
 } 
 

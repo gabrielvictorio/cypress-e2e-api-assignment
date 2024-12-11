@@ -2,7 +2,7 @@ import * as apiUsuarios from "./apiUsuarios.request"
 import usuariosSchema from "./apiUsuarios.contract"
 
 
-describe('Serverrest Usuatios Test - GET',() => {
+describe('Serverrest Usuarios Test - GET',() => {
 
     it('List all registered Users', () => {
         apiUsuarios.requestGetAllUsers().should((response) => {
@@ -20,7 +20,7 @@ describe('Serverrest Usuatios Test - GET',() => {
     })
 })
 
-describe('Serverrest Usuatios Test - POST',() => {
+describe('Serverrest Usuarios Test - POST',() => {
 
     it('Register the User', () => {
         apiUsuarios.requestPostUser().should((response) => {

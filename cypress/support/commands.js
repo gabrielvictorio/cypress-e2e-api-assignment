@@ -1,18 +1,28 @@
 import { selectorList } from "./selectors" 
+import { generateUserPayload } from "./utils"
+
 
 //Command to retrieve a Token when necesary in the Test cases
 Cypress.Commands.add('getAuthToken', () => {
-    const email = Cypress.env('email')
-    const password = Cypress.env('password')
+    const userData = generateUserPayload()
     const apiUrl = Cypress.env('apiUrl')
     const token = Cypress.env('authToken')
+    
+    //Creates a new user registry
+      cy.request({
+      method: 'POST',
+      url: `${apiUrl}/usuarios`,
+      body: userData,
+  }).should((response) => {
+    expect(response.status).to.eq(201)
+  })
   
     return cy.request({
       method: 'POST',
       url: `${apiUrl}/login`,
       body: {
-        email,
-        password,
+        password: userData.password,
+        email: userData.email
       },
     }).then((response) => {
       expect(response.status).to.eq(200)

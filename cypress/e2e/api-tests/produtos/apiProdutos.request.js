@@ -1,4 +1,4 @@
-import {faker} from '@faker-js/faker'
+import { generateProductPayload } from "../../../support/utils"
 
 const apiUrl = Cypress.env('apiUrl')
 const token = Cypress.env('authToken')
@@ -12,12 +12,7 @@ function requestGetAllProducts() {
 
 function requestPostNewProduct(){
 
-    const payloadProdutos = {
-        nome: faker.commerce.productName(),
-        preco: faker.number.int(),
-        descricao: faker.commerce.productDescription(),
-        quantidade: faker.number.int()
-    }
+    const payloadProdutos = generateProductPayload()
 
     return cy.getAuthToken().then((token) => {
         cy.request({

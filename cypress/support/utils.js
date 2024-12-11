@@ -9,4 +9,13 @@ function generateUserPayload() {
   }
 }
 
-export { generateUserPayload }
+function generateProductPayload() {
+  return{
+      nome: faker.commerce.productName(),
+      preco: faker.number.int(),
+      descricao: faker.commerce.productDescription(),
+      quantidade: faker.number.int()
+  }
+}
+
+export { generateUserPayload, generateProductPayload }

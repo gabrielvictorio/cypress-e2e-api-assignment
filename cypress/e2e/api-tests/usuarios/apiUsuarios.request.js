@@ -1,4 +1,4 @@
-import {faker} from '@faker-js/faker'
+import { generateUserPayload } from "../../../support/utils"
 
 const apiUrl = Cypress.env('apiUrl')
 
@@ -11,17 +11,12 @@ function requestGetAllUsers() {
 
 function requestPostUser() {
 
-    const payloadUsuarios = {
-        nome: faker.name.fullName(),
-        email: faker.internet.email(),
-        password: faker.internet.password(),
-        administrador: "true"
-    }
+    const userData = generateUserPayload()
 
     return cy.request({
         method: 'POST',
         url: `${apiUrl}/usuarios`,
-        body: payloadUsuarios,
+        body: userData,
     })
 } 
 

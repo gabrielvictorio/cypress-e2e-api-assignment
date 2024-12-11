@@ -1,0 +1,29 @@
+{
+  "name": "cypress_e2e_api_assignment",
+  "version": "1.0.0",
+  "description": "POC for automation with cypress for frontend e2e and api testing",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielvictorio/cypress-e2e-api-assignment.git"
+  },
+  "keywords": [
+    "cypress",
+    "api",
+    "e2e"
+  ],
+  "author": "Gabriel Victorio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabrielvictorio/cypress-e2e-api-assignment/issues"
+  },
+  "homepage": "https://github.com/gabrielvictorio/cypress-e2e-api-assignment#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "cypress": "^13.16.1",
+    "joi": "^17.13.3"
+  }
+}

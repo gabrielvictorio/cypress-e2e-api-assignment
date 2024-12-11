@@ -1,9 +1,10 @@
 import * as apiUsuarios from "./apiUsuarios.request"
+import usuariosSchema from "./apiUsuarios.contract"
 
 
 describe('Serverrest Usuatios Test - GET',() => {
 
-    it('Listar todos os usuarios', () => {
+    it('List all registered Users', () => {
         apiUsuarios.requestGetAllUsers().should((response) => {
             expect(response.status).to.eq(200)
             expect(response.body).to.have.property('quantidade')
@@ -12,11 +13,16 @@ describe('Serverrest Usuatios Test - GET',() => {
         })
     })
 
+    it ('Validate Contract for Usuario Schema', () => {
+        apiUsuarios.requestGetAllUsers().should((response) => {
+            return usuariosSchema.validateAsync(response.body)
+        })
+    })
 })
 
 describe('Serverrest Usuatios Test - POST',() => {
 
-    it('Cadastrar o usuario', () => {
+    it('Register the User', () => {
         apiUsuarios.requestPostUser().should((response) => {
             expect(response.status).to.eq(201)
             expect(response.body.message).to.eq("Cadastro realizado com sucesso")

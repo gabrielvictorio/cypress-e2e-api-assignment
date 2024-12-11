@@ -1,23 +1,33 @@
 # Cypress API & Front End Testing Assignment
 
 The chalenge was to create a project, utilizing Cypress, to structure and automate tests for both API and Front end E2E for [Serverest](https://github.com/ServeRest/ServeRest).
+
 The project has been built in english, except for the route names that are kept in portuguese to match the documentation. 
 
-##
-
-The folder strucuture has kept the Cypress e2e environment, utilizing two main subfolders:
-- api-tests : Housing tests to 3 routes.
-- e2e-tests : Housing Front end Login tests.
-
-##
-The route /login has an .md file containning an example of test cases that were followed to build the test automation.  
-
 ---
+### As dependencies the project uses:
 
-As dependencies the project uses:
 - [Faker.js](https://fakerjs.dev/) for dynamic data creation.
 - [Joi](https://joi.dev/) for Schema validation.
 - [Cypress](https://docs.cypress.io/app/get-started/why-cypress)  for test automation.
+
+##
+### Structure and test scenarios
+
+The folder strucuture has kept the Cypress e2e environment, utilizing two main subfolders:
+- api-tests : Housing tests to 3 routes.
+- e2e-tests : Housing Front end Admin User tests.
+
+The support folder was used to store:
+- Custom Cypress commands
+- Selectors List
+- Utils storing Faker functions
+
+### API Test Cases
+The route /login (cypress/e2e/api-tests/login) has an .md file containning an example of test cases that were followed to build the test automation.  
+
+### E2E Test Cases
+The E2E test (cypress/e2e/e2e-tests) has an .md file containning an example of test cases that were followed to build the test automation. 
 
 ---
 ## Features
@@ -58,7 +68,7 @@ Cypress UI
 npm cypress open
 ```
 
-### 5. Run API or E2E tests
+### 5. Run API or E2E tests (Headless)
 Run only API tests
 ```bash
 npm run test:api

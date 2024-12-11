@@ -10,5 +10,7 @@ export   const selectorList = {
     homePage: '[data-testid="home"]',
     pageAlert: '.alert',
     registerAdminCheckbox: '[data-testid="checkbox"]',
-    logoutButton: '[data-testid="logout"]'
+    logoutButton: '[data-testid="logout"]',
+    registerUserAdminAccess: '[data-testid="cadastrar-usuarios"]',
+    registerButtonAdminAccess: '[data-testid="cadastrarUsuario"]'
   }

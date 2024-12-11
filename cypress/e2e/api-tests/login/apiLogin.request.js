@@ -1,11 +1,6 @@
-import { generateUserPayload } from "../../../support/utils"
-import { requestPostUser } from "../usuarios/apiUsuarios.request"
-
-
 const apiUrl = Cypress.env('apiUrl')
 
-function requestPostCredentials() {
-    const userData = generateUserPayload()
+function requestPostCredentials(userData) {
 
     cy.request({
         method: 'POST',
@@ -25,6 +20,19 @@ function requestPostCredentials() {
     })
 }
 
+function requestPostWrongCredentials(userData) {
+
+    return cy.request({
+        method: 'POST',
+        url: `${apiUrl}/login`,
+        body: {
+            password: userData.password,
+            email: "example@gmail.com"
+          },
+        failOnStatusCode: false,
+    })
+}
+
 function requestPostEmpty() {
     return cy.request({
         method: 'POST',
@@ -33,4 +41,4 @@ function requestPostEmpty() {
     })
 }
 
-export { requestPostCredentials, requestPostEmpty }
+export { requestPostCredentials, requestPostWrongCredentials, requestPostEmpty }
